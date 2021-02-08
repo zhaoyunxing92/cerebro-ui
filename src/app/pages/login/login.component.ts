@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+// import {User} from '../../domain/user';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,14 +8,22 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username: string;
 
-  public version: string;
+  password: string;
 
   constructor() {
-    this.version = '0.9.3';
   }
 
   ngOnInit(): void {
+    /* this.loginForm = new FormGroup({
+       username: new FormControl(this.username, [Validators.required]),
+       password: new FormControl(this.password, [Validators.required])
+     });*/
   }
 
+  authorize(): void {
+    console.log(this.username);
+    console.log(this.password);
+  }
 }
