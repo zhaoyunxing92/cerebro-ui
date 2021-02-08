@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {LogoComponent} from '../component/logo/logo.component';
 
@@ -7,10 +7,12 @@ import {LogoComponent} from '../component/logo/logo.component';
   declarations: [LogoComponent],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     LogoComponent
   ]
 })

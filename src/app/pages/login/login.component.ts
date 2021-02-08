@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-// import {User} from '../../domain/user';
+import {User} from '../../domain/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -8,22 +8,26 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string;
 
-  password: string;
-
-  constructor() {
-  }
+  user: User = {username: '', password: ''};
+  loginForm: FormGroup;
 
   ngOnInit(): void {
-    /* this.loginForm = new FormGroup({
-       username: new FormControl(this.username, [Validators.required]),
-       password: new FormControl(this.password, [Validators.required])
-     });*/
+    this.loginForm = new FormGroup({
+      username: new FormControl(this.user.username, [Validators.required]),
+      password: new FormControl(this.user.password, [Validators.required])
+    });
+    /*//
+    this.loginForm.get('username').valueChanges.subscribe(data => {
+      this.user.username = data.trim();
+    });
+    this.loginForm.get('password').valueChanges.subscribe(data => {
+      this.user.password = data.trim();
+    });*/
   }
 
   authorize(): void {
-    console.log(this.username);
-    console.log(this.password);
+    console.log(this.loginForm.value);
+    console.log('user', this.user);
   }
 }
