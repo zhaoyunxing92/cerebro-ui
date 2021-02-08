@@ -17,17 +17,9 @@ export class LoginComponent implements OnInit {
       username: new FormControl(this.user.username, [Validators.required]),
       password: new FormControl(this.user.password, [Validators.required])
     });
-    /*//
-    this.loginForm.get('username').valueChanges.subscribe(data => {
-      this.user.username = data.trim();
-    });
-    this.loginForm.get('password').valueChanges.subscribe(data => {
-      this.user.password = data.trim();
-    });*/
   }
 
   authorize(): void {
-    console.log(this.loginForm.value);
-    console.log('user', this.user);
+    this.user = this.loginForm.value;
   }
 }
