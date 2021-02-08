@@ -6,8 +6,6 @@ import {AppRoutingModule} from '../routes/app-routing.module';
 import {ServicesModule} from '../services/services.module';
 import {PagesModule} from '../pages/pages.module';
 import {ShareModule} from '../share/share.module';
-import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [],
@@ -27,10 +25,9 @@ import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class CoreModule {
 
-  constructor(@SkipSelf() @Optional() private core: CoreModule, private bootstrap: NgbConfig) {
+  constructor(@SkipSelf() @Optional() private core: CoreModule) {
     if (core) {
       throw new Error('CoreModule只能被AppModule import');
     }
-    bootstrap.animation = false;
   }
 }
