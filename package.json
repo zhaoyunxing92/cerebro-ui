@@ -1,5 +1,5 @@
 {
-  "name": "cerebro-ui",
+  "name": "cerebro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
