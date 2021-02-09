@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {LogoModule} from '../component/logo/logo.module';
+import {ComponentModule} from '../component/component.module';
+import {AppRoutingModule} from '../routes/app-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,12 +10,14 @@ import {LogoModule} from '../component/logo/logo.module';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    LogoModule,
+    ComponentModule,
+    AppRoutingModule,
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    LogoModule,
+    ComponentModule,
+    AppRoutingModule,
   ]
 })
 export class SharedModule {

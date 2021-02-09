@@ -1,40 +1,45 @@
 import {NgModule} from '@angular/core';
-import {LoginModule} from './login/login.module';
-import {ConnectModule} from './connect/connect.module';
-import {OverviewModule} from './overview/overview.module';
-import {NodesModule} from './nodes/nodes.module';
-import {AliasesModule} from './aliases/aliases.module';
-import {CreateModule} from './create/create.module';
-import {TemplatesModule} from './templates/templates.module';
-import {ClusterSettingsModule} from './cluster-settings/cluster-settings.module';
-import {IndexSettingsModule} from './index-settings/index-settings.module';
-import {CatModule} from './cat/cat.module';
+
+import {TemplatesComponent} from './templates/templates.component';
+import {SharedModule} from '../shared/shared.module';
+import {AliasesComponent} from './aliases/aliases.component';
+import {AnalysisComponent} from './analysis/analysis.component';
+import {CatComponent} from './cat/cat.component';
+import {ClusterSettingsComponent} from './cluster-settings/cluster-settings.component';
+import {ConnectComponent} from './connect/connect.component';
+import {CreateComponent} from './create/create.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {IndexSettingsComponent} from './index-settings/index-settings.component';
+import {LoginComponent} from './login/login.component';
+import {NodesComponent} from './nodes/nodes.component';
+import {OverviewComponent} from './overview/overview.component';
+import {RepositoryComponent} from './repository/repository.component';
+import {RestComponent} from './rest/rest.component';
+import {SnapshotComponent} from './snapshot/snapshot.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [AliasesComponent, AnalysisComponent, CatComponent, ClusterSettingsComponent, ConnectComponent, CreateComponent,
+    DashboardComponent, IndexSettingsComponent, LoginComponent, NodesComponent, OverviewComponent, RepositoryComponent, RestComponent,
+    SnapshotComponent, TemplatesComponent],
   imports: [
-    LoginModule,
-    ConnectModule,
-    OverviewModule,
-    NodesModule,
-    AliasesModule,
-    CreateModule,
-    TemplatesModule,
-    ClusterSettingsModule,
-    IndexSettingsModule,
-    CatModule,
+    SharedModule,
   ],
   exports: [
-    LoginModule,
-    ConnectModule,
-    OverviewModule,
-    NodesModule,
-    AliasesModule,
-    CreateModule,
-    TemplatesModule,
-    ClusterSettingsModule,
-    IndexSettingsModule,
-    CatModule,
+    AliasesComponent,
+    AnalysisComponent,
+    CatComponent,
+    ClusterSettingsComponent,
+    ConnectComponent,
+    CreateComponent,
+    DashboardComponent,
+    IndexSettingsComponent,
+    LoginComponent,
+    NodesComponent,
+    OverviewComponent,
+    RepositoryComponent,
+    RestComponent,
+    SnapshotComponent,
+    TemplatesComponent,
   ]
 })
 export class PagesModule {

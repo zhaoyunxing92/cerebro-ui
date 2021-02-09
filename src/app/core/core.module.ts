@@ -2,7 +2,6 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {AppRoutingModule} from '../routes/app-routing.module';
 import {ServicesModule} from '../services/services.module';
 import {PagesModule} from '../pages/pages.module';
 import {SharedModule} from '../shared/shared.module';
@@ -16,11 +15,9 @@ import {SharedModule} from '../shared/shared.module';
     PagesModule,
     SharedModule,
     CommonModule,
-    AppRoutingModule,
   ],
   exports: [
     SharedModule,
-    AppRoutingModule,
   ]
 })
 export class CoreModule {

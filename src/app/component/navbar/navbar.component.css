@@ -1,0 +1,22 @@
+.middle {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/** navbar **/
+.navbar-red {
+  border-bottom: 5px solid #E64759;
+}
+
+.navbar-yellow {
+  border-bottom: 5px solid #E4D836;
+}
+
+.navbar-green {
+  border-bottom: 5px solid #1AC98E;
+}
+
+.navbar- {
+  border-bottom: 5px solid #55595c;
+}
