@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-connect',
@@ -7,9 +8,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnectComponent implements OnInit {
 
-  constructor() { }
+  hosts: string[] = [
+    'http://bsearch-gateway.alibaba-inc.com',
+    'http://bsearch-pre.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
+    'http://bteye.esdb.dbfree.tbsite.net:9200',
+  ];
+  connecting: boolean;
+  feedback: string;
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      host: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  connect(host: string): void {
+    this.form.get('host').setValue(host);
+    this.connecting = true;
+  }
 }

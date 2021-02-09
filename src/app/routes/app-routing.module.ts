@@ -20,21 +20,22 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-      {path: 'aliases', component: AliasesComponent},
-      {path: 'analysis', component: AnalysisComponent},
-      {path: 'cat', component: CatComponent},
-      {path: 'cluster_settings', component: ClusterSettingsComponent},
-      {path: 'connect', component: ConnectComponent, data: {title: 'connect'}},
+      {path: 'overview', component: OverviewComponent, data: {title: 'overview'}},
+      {path: 'nodes', component: NodesComponent, data: {title: 'nodes'}},
+      {path: 'rest', component: RestComponent, data: {title: 'rest'}},
+
       {path: 'create', component: CreateComponent},
       {path: 'index_settings', component: IndexSettingsComponent},
-      {path: 'nodes', component: NodesComponent, data: {title: 'nodes'}},
-      {path: 'overview', component: OverviewComponent, data: {title: 'overview'}},
-      {path: 'repository', component: RepositoryComponent, data: {title: 'repository'}},
-      {path: 'rest', component: RestComponent, data: {title: 'rest'}},
-      {path: 'snapshot', component: SnapshotComponent, data: {title: 'snapshot'}},
+      {path: 'cluster_settings', component: ClusterSettingsComponent},
+      {path: 'aliases', component: AliasesComponent},
+      {path: 'analysis', component: AnalysisComponent},
       {path: 'templates', component: TemplatesComponent},
+      {path: 'repository', component: RepositoryComponent, data: {title: 'repository'}},
+      {path: 'snapshot', component: SnapshotComponent, data: {title: 'snapshot'}},
+      {path: 'cat', component: CatComponent},
     ]
   },
+  {path: 'connect', component: ConnectComponent, data: {title: 'connect'}},
   {path: 'login', component: LoginComponent, data: {title: 'login'}},
 ];
 

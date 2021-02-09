@@ -14,6 +14,7 @@ import {AppRoutingModule} from '../routes/app-routing.module';
     AppRoutingModule,
   ],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ComponentModule,
