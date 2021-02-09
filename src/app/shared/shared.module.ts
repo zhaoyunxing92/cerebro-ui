@@ -1,20 +1,21 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {LogoComponent} from '../component/logo/logo.component';
+import {LogoModule} from '../component/logo/logo.module';
 
 @NgModule({
-  declarations: [LogoComponent],
+  declarations: [],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    LogoModule,
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    LogoComponent
+    LogoModule,
   ]
 })
-export class ShareModule {
+export class SharedModule {
 }

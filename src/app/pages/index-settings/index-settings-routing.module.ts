@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './login.component';
+import {IndexSettingsComponent} from './index-settings.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, data: {title: 'login'}}
+  {path: 'index_settings', component: IndexSettingsComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LoginRoutingModule {
+export class IndexSettingsRoutingModule {
 }

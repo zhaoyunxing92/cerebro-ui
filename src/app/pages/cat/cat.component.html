@@ -1,0 +1,37 @@
+<h4>cat apis</h4>
+<div class="row">
+
+  <label class="col-xs-12">
+    <select [(ngModel)]="api" class="form-control">
+      <option *ngFor="let api of apis" [value]="api">{{api}}</option>
+    </select>
+  </label>
+
+  <div class="col-xs-12">
+    <button class="btn btn-success pull-right" (click)="cat()" [disabled]="api===''">
+      execute
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h4 class="text-center" ng-show="data.length === 0">No data available</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th ng-repeat="col in headers track by $index" ng-show="col" ng-click="sort(col)" class="normal-action">
+          <span ng-show="col === sortCol">
+          <i class="fa fa-caret-down" ng-show="sortAsc"></i>
+          <i class="fa fa-caret-up" ng-hide="sortAsc"></i>
+        </span>
+        </th>
+      </tr>
+      </thead>
+      <tr ng-repeat="row in data | orderBy:sortCol:sortAsc track by $index " ng-show="row">
+        <td ng-repeat="col in headers track by $index" ng-show="col">
+          <!-- {{row[col]}}-->
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

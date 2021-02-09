@@ -11,6 +11,6 @@ export class LogoComponent {
   cerebro: Cerebro = {
     name: 'cerebro',
     version: '0.9.3',
-    logo: '../../../assets/img/logo.png',
+    logo: 'assets/img/logo.png',
   };
 }

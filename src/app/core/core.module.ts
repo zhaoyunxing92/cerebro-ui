@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from '../routes/app-routing.module';
 import {ServicesModule} from '../services/services.module';
 import {PagesModule} from '../pages/pages.module';
-import {ShareModule} from '../shared/share.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [],
@@ -14,12 +14,12 @@ import {ShareModule} from '../shared/share.module';
     HttpClientModule,
     ServicesModule,
     PagesModule,
-    ShareModule,
+    SharedModule,
     CommonModule,
     AppRoutingModule,
   ],
   exports: [
-    ShareModule,
+    SharedModule,
     AppRoutingModule,
   ]
 })
