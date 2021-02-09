@@ -1,8 +1,9 @@
 <div class="row logo-container">
   <div class="col-xs-12 text-center">
-    <img src="../../../assets/img/logo.png" height="160px">
-    <h4>Cerebro
-      <small>{{version}}</small>
+    <img [src]="cerebro.logo" [alt]="cerebro.name" height="160px"/>
+    <h4>
+      {{cerebro.name|titlecase}}
+      <small>{{cerebro.version}}</small>
     </h4>
   </div>
 </div>
