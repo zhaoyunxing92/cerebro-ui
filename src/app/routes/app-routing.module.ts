@@ -15,6 +15,7 @@ import {NodesComponent} from '../pages/nodes/nodes.component';
 import {RepositoryComponent} from '../pages/repository/repository.component';
 import {RestComponent} from '../pages/rest/rest.component';
 import {SnapshotComponent} from '../pages/snapshot/snapshot.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const routes: Routes = [
   {
@@ -41,7 +42,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ]
 })
 export class AppRoutingModule {
 }

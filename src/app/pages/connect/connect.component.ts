@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ConnectService} from '../../services/connect/connect.service';
+
+import {Node} from '../../domain/node';
 
 @Component({
   selector: 'app-connect',
@@ -39,7 +42,9 @@ export class ConnectComponent implements OnInit {
   feedback: string;
   form: FormGroup;
 
-  constructor() {
+  node: Node;
+
+  constructor(private connectService: ConnectService) {
   }
 
   ngOnInit(): void {
@@ -51,5 +56,6 @@ export class ConnectComponent implements OnInit {
   connect(host: string): void {
     this.form.get('host').setValue(host);
     this.connecting = true;
+    this.connectService.connect(host).subscribe(node => console.log(node));
   }
 }
