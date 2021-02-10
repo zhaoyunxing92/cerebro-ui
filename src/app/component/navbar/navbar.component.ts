@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Constant} from '../../domain/constant';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +9,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input()
   status: string;
   host: string;
+  health: any;
 
-  constructor() {
+  constructor(private router: Router) {
+
   }
 
   ngOnInit(): void {
-    this.host = '1234sdfghjkjljhfgdfsdfghjkjk';
+    const health = sessionStorage.getItem(Constant.healthStorageKey);
+    Object.assign(JSON.parse(health), this.health);
+    console.log(this.health);
   }
-
 }

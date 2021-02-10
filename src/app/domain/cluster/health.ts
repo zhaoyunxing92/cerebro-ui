@@ -1,4 +1,5 @@
 export interface ClusterHealth {
+  host: string;
   active_primary_shards: number;
   active_shards: number;
   active_shards_percent_as_number: number;

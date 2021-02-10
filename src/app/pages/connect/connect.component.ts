@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Constant} from '../../domain/constant';
 import {CatService} from '../../services/cat.service';
-
-import {ClusterHealth} from '../../domain/cluster/health';
+import {ClusterService} from '../../services/cluster.service';
 
 @Component({
   selector: 'app-connect',
@@ -18,9 +19,8 @@ export class ConnectComponent implements OnInit {
   connecting: boolean;
   feedback: string;
   form: FormGroup;
-  private clusterHealth: ClusterHealth;
 
-  constructor(private catService: CatService) {
+  constructor(private clusterService: ClusterService, private catService: CatService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -33,9 +33,12 @@ export class ConnectComponent implements OnInit {
     this.form.get('host').setValue(host);
     this.connecting = true;
     this.catService.health(host).subscribe(health => {
-      console.log(health);
-      this.clusterHealth = health;
       this.connecting = false;
+      health.host = host;
+      this.clusterService.setClusterHealth(health);
+      sessionStorage.setItem(Constant.healthStorageKey, JSON.stringify(health));
+      this.router.navigate(['/dashboard/overview']).then(_ => {
+      });
     });
   }
 }
