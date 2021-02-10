@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse navbar-{{status}}">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse navbar-{{clusterHealth.status}}">
   <div class="container-fluid">
     <div class="navbar-header">
       <img class="navbar-brand" src="assets/img/favicon.png" alt="cerebro" title="cerebro">
@@ -79,7 +79,7 @@
         </li>-->
         <li class="hidden-xs">
           <a class="nav-item nav-link">
-            <span>{{host}} [{{status}}]</span>
+            <span>{{clusterHealth.host}} [{{clusterHealth.status}}]</span>
           </a>
         </li>
         <li>

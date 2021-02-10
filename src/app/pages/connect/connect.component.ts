@@ -29,6 +29,10 @@ export class ConnectComponent implements OnInit {
     });
   }
 
+  /**
+   * health
+   * @param host es地址
+   */
   connect(host: string): void {
     this.form.get('host').setValue(host);
     this.connecting = true;

@@ -36,8 +36,10 @@ const routes: Routes = [
       {path: 'cat', component: CatComponent},
     ]
   },
-  {path: 'connect', component: ConnectComponent, data: {title: 'connect'}},
   {path: 'login', component: LoginComponent, data: {title: 'login'}},
+  {path: 'connect', component: ConnectComponent, data: {title: 'connect'}},
+  // {path: '**', component: ConnectComponent, data: {title: 'connect'}},
+  {path: '', redirectTo: '/connect', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Constant} from '../../domain/constant';
+import {ClusterHealth} from '../../domain/cluster/health';
 
 @Component({
   selector: 'app-navbar',
@@ -9,17 +10,16 @@ import {Constant} from '../../domain/constant';
 })
 export class NavbarComponent implements OnInit {
 
-  status: string;
-  host: string;
-  health: any;
+  clusterHealth: ClusterHealth;
 
   constructor(private router: Router) {
-
   }
 
   ngOnInit(): void {
     const health = sessionStorage.getItem(Constant.healthStorageKey);
-    Object.assign(JSON.parse(health), this.health);
-    console.log(this.health);
+    if (!health) {
+      this.router.navigate(['/connect']).then();
+    }
+    this.clusterHealth = JSON.parse(health);
   }
 }
