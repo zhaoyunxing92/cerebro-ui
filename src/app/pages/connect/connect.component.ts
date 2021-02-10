@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ConnectService} from '../../services/connect/connect.service';
+import {CatService} from '../../services/cat.service';
 
-import {Node} from '../../domain/node';
+import {ClusterHealth} from '../../domain/cluster/health';
 
 @Component({
   selector: 'app-connect',
@@ -13,38 +13,14 @@ export class ConnectComponent implements OnInit {
 
   hosts: string[] = [
     'http://bsearch-gateway.alibaba-inc.com',
-    'http://bsearch-pre.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
-    'http://bteye-flow.esdb.dbfree.tbsite.net:9200',
     'http://bteye.esdb.dbfree.tbsite.net:9200',
   ];
   connecting: boolean;
   feedback: string;
   form: FormGroup;
+  private clusterHealth: ClusterHealth;
 
-  node: Node;
-
-  constructor(private connectService: ConnectService) {
+  constructor(private catService: CatService) {
   }
 
   ngOnInit(): void {
@@ -56,6 +32,10 @@ export class ConnectComponent implements OnInit {
   connect(host: string): void {
     this.form.get('host').setValue(host);
     this.connecting = true;
-    this.connectService.connect(host).subscribe(node => console.log(node));
+    this.catService.health(host).subscribe(health => {
+      console.log(health);
+      this.clusterHealth = health;
+      this.connecting = false;
+    });
   }
 }

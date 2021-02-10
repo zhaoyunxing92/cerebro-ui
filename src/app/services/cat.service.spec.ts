@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ConnectService } from './connect.service';
+import { CatService } from './cat.service';
 
-describe('ConnectService', () => {
-  let service: ConnectService;
+describe('CatService', () => {
+  let service: CatService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ConnectService);
+    service = TestBed.inject(CatService);
   });
 
   it('should be created', () => {

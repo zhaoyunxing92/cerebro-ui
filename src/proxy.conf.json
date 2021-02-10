@@ -1,9 +1,6 @@
 {
-  "/api": {
-    "target": "http://localhost:9000",
-    "pathRewrite": {
-      "^/api": ""
-    },
+  "/": {
+    "target": "http://bsearch-gateway.alibaba-inc.com",
     "secure": false
   }
 }
