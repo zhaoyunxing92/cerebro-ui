@@ -36,9 +36,9 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     const health = sessionStorage.getItem(Constant.healthStorageKey);
     this.clusterHealth = JSON.parse(health);
-    this.overviewService.overview(this.clusterHealth.host).subscribe(data => {
-      console.log(data);
-    });
+    // this.overviewService.overview(this.clusterHealth.host).subscribe(data => {
+    //   console.log(data);
+    // });
   }
 
 }

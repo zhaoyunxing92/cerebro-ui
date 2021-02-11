@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ClusterHealth} from '../domain/cluster/health';
+import {Cluster} from '../domain/cluster/cluster';
 
 import {Subject, Observable} from 'rxjs';
 
@@ -8,13 +8,18 @@ import {Subject, Observable} from 'rxjs';
 })
 export class ClusterService {
 
-  private clusterHealth: Subject<ClusterHealth> = new Subject<ClusterHealth>();
+  private cluster = new Subject<Cluster>();
+  cluster$ = this.cluster.asObservable();
 
-  setClusterHealth(health: ClusterHealth): void {
-    this.clusterHealth.next(health);
+  constructor() {
+    this.cluster.asObservable();
   }
 
-  getClusterHealth(): Observable<ClusterHealth> {
-    return this.clusterHealth.asObservable();
+  setCluster(health: Cluster): void {
+    this.cluster.next(health);
+  }
+
+  getCluster(): Observable<Cluster> {
+    return this.cluster.asObservable();
   }
 }

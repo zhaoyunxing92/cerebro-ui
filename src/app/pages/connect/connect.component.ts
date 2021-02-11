@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Constant} from '../../domain/constant';
 import {CatService} from '../../services/cat.service';
 import {ClusterService} from '../../services/cluster.service';
+import {Cluster} from '../../domain/cluster/cluster';
 
 @Component({
   selector: 'app-connect',
@@ -13,12 +14,14 @@ import {ClusterService} from '../../services/cluster.service';
 export class ConnectComponent implements OnInit {
 
   hosts: string[] = [
-    'http://bsearch-gateway.alibaba-inc.com',
     'http://localhost:9200',
+    'http://bsearch-gateway.alibaba-inc.com',
     'http://bteye.esdb.dbfree.tbsite.net:9200',
   ];
+
   connecting: boolean;
   feedback: string;
+  private cluster: Cluster;
   form: FormGroup;
 
   constructor(private clusterService: ClusterService, private catService: CatService, private router: Router) {
@@ -37,10 +40,12 @@ export class ConnectComponent implements OnInit {
   connect(host: string): void {
     this.form.get('host').setValue(host);
     this.connecting = true;
-    this.catService.health(host).subscribe(health => {
+    this.catService.health(host).subscribe((health: Cluster) => {
+      // console.log(health);
+      this.cluster = health;
+      this.cluster.host = host;
       this.connecting = false;
-      health.host = host;
-      this.clusterService.setClusterHealth(health);
+      this.clusterService.setCluster(this.cluster);
       sessionStorage.setItem(Constant.healthStorageKey, JSON.stringify(health));
       this.router.navigate(['/dashboard/overview']).then(_ => {
       });
