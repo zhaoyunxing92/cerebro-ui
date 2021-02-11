@@ -1,24 +1,27 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {ComponentModule} from '../component/component.module';
 import {AppRoutingModule} from '../routes/app-routing.module';
+import {NavbarComponent} from './navbar/navbar.component';
+import {LogoComponent} from './logo/logo.component';
+import {StatsComponent} from './stats/stats.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [NavbarComponent, LogoComponent, StatsComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    ComponentModule,
     AppRoutingModule,
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ComponentModule,
     AppRoutingModule,
+    NavbarComponent,
+    LogoComponent,
+    StatsComponent,
   ]
 })
 export class SharedModule {

@@ -14,6 +14,7 @@ export class ConnectComponent implements OnInit {
 
   hosts: string[] = [
     'http://bsearch-gateway.alibaba-inc.com',
+    'http://localhost:9200',
     'http://bteye.esdb.dbfree.tbsite.net:9200',
   ];
   connecting: boolean;
