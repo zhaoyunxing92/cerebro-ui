@@ -27,8 +27,4 @@ export class TimeIntervalPipe implements PipeTransform {
         });
         return timeStr;
     }
-
-    toString(time: number): string {
-        return '';
-    }
 }

@@ -6,9 +6,10 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {LogoComponent} from './logo/logo.component';
 import {StatsComponent} from './stats/stats.component';
 import {PipeModule} from '../pipe/pipe.module';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
-    declarations: [NavbarComponent, LogoComponent, StatsComponent],
+    declarations: [NavbarComponent, LogoComponent, StatsComponent, PaginationComponent],
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -25,6 +26,7 @@ import {PipeModule} from '../pipe/pipe.module';
         LogoComponent,
         StatsComponent,
         PipeModule,
+        PaginationComponent,
     ]
 })
 export class SharedModule {
