@@ -5,4 +5,6 @@ export interface Cluster extends ClusterHealth {
   host: string;
   // 文档数
   docs: number;
+  // indices
+  indices: number;
 }

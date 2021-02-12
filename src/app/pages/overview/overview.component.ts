@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {OverviewService} from '../../services/overview.service';
-import {ClusterHealth} from '../../domain/cluster/health';
+import {Cluster} from '../../domain/cluster/cluster';
 import {Constant} from '../../domain/constant';
 
 @Component({
@@ -11,7 +11,7 @@ import {Constant} from '../../domain/constant';
 })
 export class OverviewComponent implements OnInit {
 
-  clusterHealth: ClusterHealth;
+  cluster: Cluster;
 
   indices: any;
   nodes: any;
@@ -35,7 +35,7 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     const health = sessionStorage.getItem(Constant.healthStorageKey);
-    this.clusterHealth = JSON.parse(health);
+    this.cluster = JSON.parse(health);
     // this.overviewService.overview(this.clusterHealth.host).subscribe(data => {
     //   console.log(data);
     // });

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Cluster} from '../../domain/cluster/cluster';
 
 @Component({
   selector: 'app-stats',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatsComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  cluster: Cluster;
+
+  constructor() {
+    console.log(this.cluster);
+  }
 
   ngOnInit(): void {
+    console.log(this.cluster);
   }
 
 }
