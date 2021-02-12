@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
     getStatus(): void {
         this.scheduler.subscribe(val => {
-            console.log(new Date().getTime() / 1000);
+           // console.log(new Date().getTime() / 1000);
         });
     }
 

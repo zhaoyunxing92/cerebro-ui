@@ -19,7 +19,6 @@ export class TimeIntervalPipe implements PipeTransform {
 
         Object.keys(unitMeasure).some(key => {
             const amount = Math.floor(time / unitMeasure[key]);
-            console.log(time, amount);
             if (amount) {
                 timeStr = amount + key;
                 return true;
