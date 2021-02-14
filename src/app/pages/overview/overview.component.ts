@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {OverviewService} from '../../services/overview.service';
 import {Cluster} from '../../domain/cluster/cluster';
 import {Constant} from '../../domain/constant';
+import {log} from 'util';
 
 @Component({
   selector: 'app-overview',
@@ -36,9 +37,19 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     const health = sessionStorage.getItem(Constant.healthStorageKey);
     this.cluster = JSON.parse(health);
-    // this.overviewService.overview(this.clusterHealth.host).subscribe(data => {
-    //   console.log(data);
-    // });
+    this.overviewService.overview(this.cluster.host).subscribe(data => {
+      const indexStats = data[2];
+      const nodes = data[4];
+      this.cluster = data[5];
+      this.cluster.docs = indexStats._all.primaries.docs.count;
+      this.cluster.indices = indexStats.indices.length;
+      this.cluster.shards = this.cluster.active_shards + this.cluster.initializing_shards + this.cluster.relocating_shards
+        + this.cluster.unassigned_shards;
+      this.cluster.indices = Object.keys(nodes).length;
+      this.cluster.size = indexStats._all.total.store.size_in_bytes;
+
+      console.log(data);
+    });
   }
 
 }

@@ -21,7 +21,7 @@ export class ConnectComponent implements OnInit {
 
   connecting: boolean;
   feedback: string;
-  private cluster: Cluster;
+  // private cluster: Cluster;
   form: FormGroup;
 
   constructor(private clusterService: ClusterService, private catService: CatService, private router: Router) {
@@ -40,13 +40,14 @@ export class ConnectComponent implements OnInit {
   connect(host: string): void {
     this.form.get('host').setValue(host);
     this.connecting = true;
-    this.catService.health(host).subscribe((health: Cluster) => {
-      // console.log(health);
-      this.cluster = health;
-      this.cluster.host = host;
+    this.catService.health(host).subscribe((cluster: Cluster) => {
+      cluster.shards = 0;
+      cluster.host = host;
+      cluster.docs = 0;
+      cluster.indices = 0;
       this.connecting = false;
-      this.clusterService.setCluster(this.cluster);
-      sessionStorage.setItem(Constant.healthStorageKey, JSON.stringify(health));
+      sessionStorage.setItem(Constant.healthStorageKey, JSON.stringify(cluster));
+      sessionStorage.setItem(Constant.hostKey, host);
       this.router.navigate(['/dashboard/overview']).then(_ => {
       });
     });

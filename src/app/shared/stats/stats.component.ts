@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Cluster} from '../../domain/cluster/cluster';
 
 @Component({
@@ -6,17 +6,8 @@ import {Cluster} from '../../domain/cluster/cluster';
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent {
 
   @Input()
   cluster: Cluster;
-
-  constructor() {
-    console.log(this.cluster);
-  }
-
-  ngOnInit(): void {
-    console.log(this.cluster);
-  }
-
 }

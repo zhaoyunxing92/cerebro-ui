@@ -7,4 +7,8 @@ export interface Cluster extends ClusterHealth {
   docs: number;
   // indices
   indices: number;
+  // shards
+  shards: number;
+  // size
+  size: number;
 }

@@ -19,8 +19,6 @@ export class OverviewService {
     const health = this.http.get(`${host}/_cluster/health`);
     const nodes = this.http.get(`${host}/_nodes/_all/os,jvm?human=true`);
 
-    // forkJoin(clusterState, nodesStats, indexStats, clusterSettings, aliases);
-
     return forkJoin(clusterState, nodesStats, indexStats, clusterSettings, aliases, health, nodes);
   }
 }

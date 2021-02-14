@@ -29,7 +29,7 @@
     <div class="col-md-2 text-center stats">
         <span class="stat">
           <span class="stat-value">
-             {{cluster.active_shards + cluster.initializing_shards + cluster.relocating_shards + cluster.unassigned_shards}}
+             {{cluster.shards}}
           </span>
           <span class="stat-value">
              shards
@@ -49,7 +49,7 @@
     <div class="col-md-2 text-center stats">
         <span class="stat">
           <span class="stat-value">
-           {{cluster.cluster_name}}
+           {{cluster.size| bytes}}
           </span>
        </span>
     </div>
