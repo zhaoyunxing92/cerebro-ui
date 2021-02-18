@@ -47,8 +47,6 @@ export class OverviewComponent implements OnInit {
         + this.cluster.unassigned_shards;
       this.cluster.indices = Object.keys(nodes).length;
       this.cluster.size = indexStats._all.total.store.size_in_bytes;
-
-      console.log(data);
     });
   }
 
