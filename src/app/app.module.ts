@@ -4,11 +4,8 @@ import {CoreModule} from './core/core.module';
 import {AppComponent} from './app.component';
 
 import 'brace';
-// import 'brace/mode/text';
 import 'brace/mode/json';
-// import 'brace/mode/javascript';
-// import 'brace/mode/css';
-import 'brace/theme/github';
+import 'brace/theme/chaos';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,26 +1,24 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AceConfigInterface} from 'ngx-ace-wrapper/lib/ace.interfaces';
 
 @Component({
   selector: 'app-rest',
   templateUrl: './rest.component.html',
   styleUrls: ['./rest.component.css']
 })
-export class RestComponent implements OnInit, AfterViewInit {
-  // @ViewChild('editor') editor;
+export class RestComponent implements OnInit {
+  options: AceConfigInterface = {
+    mode: 'json',
+    fontSize: '14px',
+    theme: 'chaos',
+    cursorStyle: 'ace',
+    useSoftTabs: true,
+    tabSize: 2,
+  };
+  content = '{}';
+
   method = 'GET';
   path = '';
-  public content = `{
-    "accessId": "risk-rmp.admin",
-    "accessKey": "6F3DYHErIduZTKPU",
-    "desc": "内控工作台",
-    "operators": [
-      "WB735784",
-      "WB318191"
-    ],
-    "categoryTemplateMap": {
-      "行业白名单删除流程的跟进通知": "5ZraIncBPAn0hQquK619"
-    }
-  }`;
 
   constructor() {
   }
@@ -28,23 +26,16 @@ export class RestComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    // this.editor.setFontSize('10px');
-    // this.editor.setTheme('ace/theme/cerebro');
-    // this.editor.getSession().setMode('ace/mode/json');
-    // this.editor.setOptions({
-    //   fontFamily: 'Monaco, Menlo, Consolas, "Courier New", monospace',
-    //   fontSize: '12px',
-    //   fontWeight: '400',
-    // });
-  }
-
   execute(): void {
     console.log(this.method);
+    console.log(this.content);
+    console.log(this.path);
   }
 
-  log(event: any, txt: any): void {
-    // console.log('ace event', event);
-    // document.querySelector('#log').value += `${txt}\n`;
+  /**
+   * 格式化json
+   */
+  format(): void {
+    this.content = JSON.stringify(JSON.parse(this.content), null, 2);
   }
 }
