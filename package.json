@@ -22,6 +22,7 @@
     "@angular/router": "~11.1.2",
     "bootstrap": "^3.3.7",
     "jquery": "^3.5.1",
+    "ngx-ace-wrapper": "^11.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

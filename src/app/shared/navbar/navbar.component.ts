@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {interval, Observable, Subscription, timer} from 'rxjs';
+import {timer} from 'rxjs';
 import {Constant} from '../../domain/constant';
-import {Cluster} from '../../domain/cluster/cluster';
+import {Cluster} from '../../domain';
 
 @Component({
     selector: 'app-navbar',

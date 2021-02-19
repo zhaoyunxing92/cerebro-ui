@@ -44,7 +44,6 @@ export class NodesService {
           disk: this.getDisk(stats),
           cpu: this.getCup(stats),
         };
-        console.log(node);
         nodes.push(node);
       });
       return nodes;
@@ -71,7 +70,6 @@ export class NodesService {
    * 是否主节点
    * @param id 节点id
    * @param masters master节点列表
-   * @protecte
    */
   protected isMaster(id: string, masters: Master[]): boolean {
     return masters.filter(mt => mt.id === id).length > 0;

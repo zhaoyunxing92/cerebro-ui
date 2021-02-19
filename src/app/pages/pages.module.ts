@@ -16,6 +16,7 @@ import {OverviewComponent} from './overview/overview.component';
 import {RepositoryComponent} from './repository/repository.component';
 import {RestComponent} from './rest/rest.component';
 import {SnapshotComponent} from './snapshot/snapshot.component';
+import {AceModule} from 'ngx-ace-wrapper';
 
 @NgModule({
   declarations: [AliasesComponent, AnalysisComponent, CatComponent, ClusterSettingsComponent, ConnectComponent, CreateComponent,
@@ -23,6 +24,7 @@ import {SnapshotComponent} from './snapshot/snapshot.component';
     SnapshotComponent, TemplatesComponent],
   imports: [
     SharedModule,
+    AceModule,
   ],
   exports: [
     AliasesComponent,
