@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AceConfigInterface} from 'ngx-ace-wrapper/lib/ace.interfaces';
+import {ClientService} from '../../services/elasticsearch';
+
 
 @Component({
   selector: 'app-rest',
@@ -20,7 +22,7 @@ export class RestComponent implements OnInit {
   method = 'GET';
   path = '';
 
-  constructor() {
+  constructor(private client: ClientService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class RestComponent implements OnInit {
     console.log(this.method);
     console.log(this.content);
     console.log(this.path);
+    this.client.execute(this.path, this.method, this.content);
   }
 
   /**
