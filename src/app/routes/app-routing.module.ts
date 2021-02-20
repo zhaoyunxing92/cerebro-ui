@@ -16,6 +16,7 @@ import {RepositoryComponent} from '../pages/repository/repository.component';
 import {RestComponent} from '../pages/rest/rest.component';
 import {SnapshotComponent} from '../pages/snapshot/snapshot.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {CerebroGuard} from '../guard/cerebro.guard';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
     ]
   },
   {path: 'login', component: LoginComponent, data: {title: 'login'}},
-  {path: 'connect', component: ConnectComponent, data: {title: 'connect'}},
+  {path: 'connect', component: ConnectComponent, data: {title: 'connect'}, canActivate: [CerebroGuard]},
   // {path: '**', component: ConnectComponent, data: {title: 'connect'}},
   {path: '', redirectTo: '/connect', pathMatch: 'full'},
 ];

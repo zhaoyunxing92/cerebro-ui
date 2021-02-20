@@ -13,9 +13,9 @@ export class NodesService {
   }
 
   getNodes(host: string): Observable<Node[]> {
-    const nodesRest = this.clusterService.nodes(host);
-    const nodesStatsRest = this.clusterService.nodesStats(host);
-    const mastersRest = this.catService.master(host);
+    const nodesRest = this.clusterService.nodes();
+    const nodesStatsRest = this.clusterService.nodesStats();
+    const mastersRest = this.catService.master();
 
     return forkJoin([nodesRest, nodesStatsRest, mastersRest]).pipe(map<any[], Node[]>(res => {
       const nodes: Node[] = [];

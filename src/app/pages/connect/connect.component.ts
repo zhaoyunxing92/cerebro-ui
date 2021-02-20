@@ -4,7 +4,8 @@ import {Router} from '@angular/router';
 import {Constant} from '../../domain/constant';
 import {CatService} from '../../services/cat.service';
 import {ClusterService} from '../../services/cluster.service';
-import {Cluster} from '../../domain/cluster/cluster';
+import {Cluster} from '../../domain';
+import {HostService} from '../../services/host.service';
 
 @Component({
   selector: 'app-connect',
@@ -21,10 +22,9 @@ export class ConnectComponent implements OnInit {
 
   connecting: boolean;
   feedback: string;
-  // private cluster: Cluster;
   form: FormGroup;
 
-  constructor(private clusterService: ClusterService, private catService: CatService, private router: Router) {
+  constructor(private hostService: HostService, private catService: CatService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class ConnectComponent implements OnInit {
    */
   connect(host: string): void {
     this.form.get('host').setValue(host);
+    this.hostService.setHost(host);
     this.connecting = true;
     this.catService.health(host).subscribe((cluster: Cluster) => {
       cluster.shards = 0;

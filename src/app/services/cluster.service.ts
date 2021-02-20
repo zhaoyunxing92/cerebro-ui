@@ -9,10 +9,11 @@ import {Subject, Observable} from 'rxjs';
 export class ClusterService {
 
   private cluster = new Subject<Cluster>();
-  cluster$ = this.cluster.asObservable();
+
+//  cluster$ = this.cluster.asObservable();
 
   constructor() {
-    this.cluster.asObservable();
+    // this.cluster.asObservable();
   }
 
   setCluster(health: Cluster): void {
