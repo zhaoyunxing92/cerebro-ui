@@ -4,3 +4,11 @@
   min-height: 580px;
   height: 580px;
 }
+
+.ace-result {
+  border: 1px solid #55595c;
+  min-height: 647px;
+  height: 647px;
+  /* overflow: auto;
+   display: block;*/
+}

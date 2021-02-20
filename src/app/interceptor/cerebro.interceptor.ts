@@ -10,7 +10,7 @@ export class CerebroInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(this.getUrl(req));
+    // console.log(req);
     const clone = req.clone({
       url: this.getUrl(req),
       // withCredentials: true,

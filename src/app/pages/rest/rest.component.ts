@@ -9,7 +9,7 @@ import {ClientService} from '../../services/elasticsearch';
   styleUrls: ['./rest.component.css']
 })
 export class RestComponent implements OnInit {
-  options: AceConfigInterface = {
+  argsOptions: AceConfigInterface = {
     mode: 'json',
     fontSize: '14px',
     theme: 'chaos',
@@ -17,10 +17,30 @@ export class RestComponent implements OnInit {
     useSoftTabs: true,
     tabSize: 2,
   };
-  content = '{}';
-
+  resultOptions: AceConfigInterface = {
+    readOnly: true,
+    mode: 'json',
+    fontSize: '14px',
+    theme: 'chaos',
+    cursorStyle: 'ace',
+    useSoftTabs: true,
+    tabSize: 2,
+  };
+  // 请求参数
+  args = '{\n' +
+    '  "query": {\n' +
+    '    "term": {\n' +
+    '      "user": {\n' +
+    '        "value": "eddie"\n' +
+    '      }\n' +
+    '    }\n' +
+    '  }\n' +
+    '}';
+  // 响应结果
+  result = '';
+  // 请求方法
   method = 'GET';
-  path = '';
+  path = 'kibana_sample_data_ecommerce/_search';
 
   constructor(private client: ClientService) {
   }
@@ -29,16 +49,23 @@ export class RestComponent implements OnInit {
   }
 
   execute(): void {
-    console.log(this.method);
-    console.log(this.content);
-    console.log(this.path);
-    this.client.execute(this.path, this.method, this.content);
+    if (!this.path.startsWith('/')) {
+      this.path = '/' + this.path;
+    }
+    //
+    if (this.path.endsWith('_search')) {
+      this.method = 'POST';
+    }
+    this.result = '';
+    this.client.execute(this.path, this.method, this.args).subscribe(res => {
+      this.result = JSON.stringify(res, null, 2);
+    });
   }
 
   /**
    * 格式化json
    */
   format(): void {
-    this.content = JSON.stringify(JSON.parse(this.content), null, 2);
+    this.args = JSON.stringify(JSON.parse(this.args), null, 2);
   }
 }
