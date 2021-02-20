@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AceConfigInterface} from 'ngx-ace-wrapper/lib/ace.interfaces';
-import {ClientService} from '../../services/elasticsearch';
+import {ClientService} from '../../services/elastic';
 
 
 @Component({

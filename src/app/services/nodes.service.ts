@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CatService, ClusterService} from './elasticsearch';
+import {CatService, ClusterService} from './elastic';
 import {forkJoin, Observable} from 'rxjs';
 import {Cpu, Disk, Heap, Master, Node} from '../domain';
 import {map} from 'rxjs/operators';
